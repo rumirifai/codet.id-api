@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+tensorflow
+google-cloud-storage
+pillow
+python-dotenv
+requests
+python-multipart
