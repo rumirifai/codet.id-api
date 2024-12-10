@@ -6,8 +6,8 @@ const authMiddleware = (req, res, next) => {
         return res.status(401).json({ message: 'No token, authhorization denied' });
     }
     try {
-        const decode = jwt.verify(token, process.env.JWT_SECRET);
-        req.user = decode;
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        req.user = decoded;
         next();
     } catch (err) {
         res.status(401).json({ message: 'Token is not valid '});
