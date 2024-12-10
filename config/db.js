@@ -3,7 +3,7 @@ const mysql = require('mysql2/promise')
 // Koneksi ke Google Cloud SQL
 const connectDB = async () => {
     const pool = await mysql.createPool({
-      host: process.env.DB_HOST, // atau socketPath jika menggunakan Unix socket
+      host: process.env.DB_HOST,
       user: process.env.DB_User,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
