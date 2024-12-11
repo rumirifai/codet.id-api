@@ -13,9 +13,6 @@ const treeRoutes = require("./routes/trees");
 
 app.use('/api/auth', authRoutes);
 app.use('/api/trees', treeRoutes);
-app.use('/', (req, res) => {
-    res.send("anjay bisa");
-});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

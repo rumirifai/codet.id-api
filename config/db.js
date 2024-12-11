@@ -8,8 +8,6 @@ const connectDB = async () => {
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
     });
-
-    console.log("Connected to Google Cloud SQL");
     return pool;
 };
 

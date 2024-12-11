@@ -49,10 +49,10 @@ router.get('/history', authMiddleware, async (req, res) => {
     const user_id = req.user.id;
     try {
         const userHistory = await Trees.history({ user_id });
-        if (!userHistory) {
+        if (!userHistory || userHistory.length === 0) {
             return res.status(404).json({ message: "There's no history. Try analyze image!" });
         }
-        res.status(201).json({ messgae: userHistory });
+        res.status(201).json({ message : userHistory });
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: err.message });
@@ -60,9 +60,10 @@ router.get('/history', authMiddleware, async (req, res) => {
 });
 
 router.post('/historyById', authMiddleware, async (req, res) => {
+    const user_id = req.user.id;
     const scan_id = req.body.scan_id;
     try {
-        const historyId = await Trees.historyById({ scan_id });
+        const historyId = await Trees.historyById({ scan_id, user_id });
         if (!historyId) {
             return res.status(404).json({ message: "History not found "});
         }
@@ -70,5 +71,6 @@ router.post('/historyById', authMiddleware, async (req, res) => {
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
-})
+}); 
+
 module.exports = router;

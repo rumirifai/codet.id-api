@@ -19,15 +19,15 @@ class trees {
         const db = await connectDB();
         const query = "SELECT * FROM scan_result WHERE user_id = ? ORDER BY created_at DESC";
         const [rows] = await db.execute(query, [user_id]);
-        return rows[0];
+        return rows;
     }
 
-    static async historyById({scan_id}) {
+    static async historyById({scan_id, user_id}) {
         const db = await connectDB();
-        const query = "SELECT * FROM scan_result WHERE scan_id = ?";
-        const [rows] = await db.execute(query, [scan_id]);
+        const query = "SELECT * FROM scan_result WHERE scan_id = ? AND user_id = ?";
+        const [rows] = await db.execute(query, [scan_id, user_id]);
         return rows[0];
     } 
-}
+};
 
 module.exports = trees;

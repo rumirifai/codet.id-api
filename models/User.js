@@ -20,6 +20,6 @@ class user {
     static async validatePassword(inputPassword, storedpassword) {
         return await bcrypt.compare(inputPassword, storedpassword);
     }
-}
+};
 
 module.exports = user;
